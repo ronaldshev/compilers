@@ -1,10 +1,8 @@
 import java.io.*;
-import java.nio.file.*;
 import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.io.IOException;
-import java.util.stream.Stream;
 
 enum Token {
 
@@ -69,7 +67,7 @@ enum Token {
 }
 
 public class p2 {
-    public static void main(String[] args) throws IOException, InterruptedException {
+    public static void main(String[] args) throws IOException {
         try {
 
             String[][] parseTable = {
@@ -96,7 +94,7 @@ public class p2 {
                     {"statement", "expression-stmt", "expression-stmt", "", "expression-stmt", "", "expression-stmt", "", "", "", "", "", "compound-stmt", "", "selection-stmt", "", "iteration-stmt", "return-stmt", "", "", "", "", "", "", "", "", "", "", "", "", ""},
                     {"expression-stmt", "expression SEMICOLON", "SEMICOLON", "", "expression SEMICOLON", "", "expression SEMICOLON", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""},
                     {"selection-stmt", "", "", "", "", "", "", "", "", "", "", "", "", "", "IF OPENPAREN expression CLOSEPAREN statement selection-stmt'", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""},
-                    {"selection-stmt'", "EMPTY", "EMPTY", "", "EMPTY", "", "EMPTY", "", "", "", "", "", "EMPTY", "EMPTY", "EMPTY", "FUCKING NOT EMPTY MAYBE TRY SOMETHING", "EMPTY", "EMPTY", "", "", "", "", "", "", "", "", "", "", "", "", ""},
+                    {"selection-stmt'", "EMPTY", "EMPTY", "", "EMPTY", "", "EMPTY", "", "", "", "", "", "EMPTY", "EMPTY", "EMPTY", "?????", "EMPTY", "EMPTY", "", "", "", "", "", "", "", "", "", "", "", "", ""},
                     {"iteration-stmt", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "WHILE OPENPAREN expression CLOSEPAREN statement", "", "", "", "", "", "", "", "", "", "", "", "", "", ""},
                     {"return-stmt", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "RETURN return-stmt'", "", "", "", "", "", "", "", "", "", "", "", "", ""},
                     {"return-stmt'", "expression SEMICOLON", "SEMICOLON", "", "expression SEMICOLON", "", "expression SEMICOLON", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""},
@@ -118,23 +116,33 @@ public class p2 {
                     {"arg-list", "expression arg-list'", "", "", "expression arg-list'", "", "expression arg-list'", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""},
                     {"arg-list'", "", "", "", "", "", "", "EMPTY", "", "", "", "COMMA expression arg-list'", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""}
             };
-            String fileName = "test5.txt";
+            String fileName = "test.txt";
             File file = new File(fileName);
             Scanner x = new Scanner(file);
-            String nextString;
-            char nextChar;
             Stack<String> tokenStack = new Stack<String>();
+            Stack<String> tokenStack2 = new Stack<String>();
 
-            Analyzer analyzer = new Analyzer(fileName, tokenStack);
+
+            Analyzer analyzer = new Analyzer(fileName, tokenStack, tokenStack2);
             while (!analyzer.isDone()) {
                 analyzer.continueLooking();
             }
+            int selectionTry = 1;
 
-            Syntax syntax = new Syntax(tokenStack, parseTable);
-            System.out.println(syntax.syntaxifying());
+
+            Syntax syntax = new Syntax(tokenStack, parseTable, selectionTry);
+            String rejected = syntax.syntaxifying();
+            if(rejected.matches("REJECT")){
+                selectionTry++;
+            }else System.out.print(rejected);
+
+            if(selectionTry == 2) {
+                Syntax syntax1 = new Syntax(tokenStack2, parseTable, selectionTry);
+                System.out.print(syntax1.syntaxifying());
+            }
 
         } catch (IOException e) {
-            System.out.println("Error reading file: " + "testfile.txt");
+            System.out.print("Error reading file.");
         }
     }
 }
@@ -146,15 +154,17 @@ class Syntax {
     String[][] parseTable;
     Map<String, Integer> rows = new HashMap<String, Integer>();
     Map<String, Integer> columns = new HashMap<String, Integer>();
+    int selectionStmtTry;
 
-    Syntax(Stack<String> stack, String[][] table){
+    Syntax(Stack<String> stack, String[][] table, int selectionTry){
         tokenStack = stack;
         parseTable = table;
+        selectionStmtTry = selectionTry;
         for(int i = 1; i < 44; i++)
             rows.put(parseTable[i][0], i);
         for(int j = 1; j < 30; j++)
             columns.put(parseTable[0][j], j);
-        System.out.println(parseTable[rows.get("program")][columns.get("INT")]);
+        //System.out.println(parseTable[rows.get("program")][columns.get("INT")]);
     }
 
     void reverseArray(String[] array){
@@ -191,22 +201,43 @@ class Syntax {
 
         currentToken = tokenStack.peek();
         currentParse = parsingStack.peek();
-        System.out.println("Current Token: " + currentToken);
-        System.out.println(tokenStack);
-        System.out.println("Current Parsing: " + currentParse);
-        System.out.println(parsingStack);
+//        System.out.println("Current Token: " + currentToken);
+//        System.out.println(tokenStack);
+//        System.out.println("Current Parsing: " + currentParse);
+//        System.out.println(parsingStack);
         if(currentToken.equals(currentParse)){
             if(currentToken.matches("\\$") && currentToken.matches("\\$"))
                 return "ACCEPT";
             tokenStack.pop();
             parsingStack.pop();
-            System.out.println("\n");
+            //System.out.println("\n");
             return acceptStatus;
         }
         if(currentToken.matches("ERROR"))
             return "REJECT";
-        newParse = parseTable[rows.get(currentParse)][columns.get(currentToken)];
-        System.out.println("New from table: " + newParse + "\n");
+        if(currentParse.matches("\\?\\?\\?\\?\\?")){
+            if(selectionStmtTry == 1){
+                if (currentToken.matches("ELSE")) {
+                    tokenStack.pop();
+                    parsingStack.pop();
+                    parsingStack.push("statement");
+                    return acceptStatus;
+                } else {
+                    parsingStack.pop();
+                    return acceptStatus;
+                }
+            } else if(selectionStmtTry == 2){
+                tokenStack.pop();
+                parsingStack.pop();
+                return acceptStatus;
+            }
+        }
+        try {
+            newParse = parseTable[rows.get(currentParse)][columns.get(currentToken)];
+        } catch(Exception NullPointerException){
+            return "REJECT";
+        }
+        //System.out.println("New from table: " + newParse + "\n");
 
         if(newParse.matches(""))
             return "REJECT";
@@ -247,6 +278,7 @@ class Analyzer {
     private ArrayList<String> lexeme = new ArrayList<String>();
     private ArrayList<Token> tokens = new ArrayList<Token>();
     Stack<String> tokenStack;
+    Stack<String> tokenStack2;
 
     static {
         blanks.add('\r');
@@ -258,15 +290,16 @@ class Analyzer {
         blanks.add((char) 32);
     }
 
-    Analyzer(String file, Stack<String> tokensStack){
+    Analyzer(String file, Stack<String> tokensStack, Stack<String> tokensStack2){
         try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
             tokenStack = tokensStack;
+            tokenStack2 = tokensStack2;
             String line;
             while ((line = reader.readLine()) != null) {
                 in.append("$").append(line).append("$");
             }
         } catch (IOException e){
-            System.out.println("Error reading file: " + file);
+            System.out.print("Error reading file: " + file);
         }
         continueLooking();
     }
@@ -303,7 +336,7 @@ class Analyzer {
     }
 
     private boolean printLine(){
-        System.out.println(in.toString());
+        //System.out.println(in.toString());
         for(Token t : Token.values()){
             int end = t.match(in.toString());
             if(end != -1){
@@ -345,6 +378,7 @@ class Analyzer {
                     lexeme.add(in.substring(0, end));
                     tokens.add(token);
                     tokenStack.push(token.toString());
+                    tokenStack2.push(token.toString());
                     in.delete(0, end);
                 }
                 return true;

@@ -4,10 +4,9 @@ int main(void)
   if (x >0)
 	if (x <6)
 		x = 9;
-	else
-		x = 7;
-  else
-	x = 5;
-  else
-	x =4   ;
+    else
+        if( x > 0)
+            x = 9;
+    else
+
 }

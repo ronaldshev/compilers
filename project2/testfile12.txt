@@ -10,7 +10,7 @@ int MEGAFUNCTION ( void )
     return 4; }
 
 int MEGAFUNCTIONTWO(int x,int y){if (x < 0) return x + y;
-//else return x - y;
+else return x - y;
 }
 float a(float b) {
     int c;
@@ -36,7 +36,7 @@ float a(float b) {
 
 int gcd( int u, int v) {
 if (v == 0) return u;
-//else return gcd(v,u-u/v*v);
+else return gcd(v,u-u/v*v);
 
 }
 
