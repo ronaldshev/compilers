@@ -1,0 +1,15 @@
+int i = 0;
+
+do_task (name, secs) {
+    if (secs == 0) {
+        write("Completed" + name + "instantaneously");
+    } else {
+        sleep(secs * 1000);
+        write("After" + secs + "completed" + name);
+    }
+}
+
+while i <= 10 {
+    do_task(i, "some task");
+    i = i + 1;
+}

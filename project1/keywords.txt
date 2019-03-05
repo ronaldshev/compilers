@@ -1,0 +1,6 @@
+else
+if
+int
+return
+void
+while
