@@ -66,7 +66,7 @@ enum Token {
     }
 }
 
-public class p2 {
+public class p3 {
     public static void main(String[] args) throws IOException {
         try {
 
@@ -130,19 +130,28 @@ public class p2 {
 
             Syntax syntax = new Syntax(tokenStack, parseTable, selectionTry);
             String rejected = syntax.syntaxifying();
-            if(rejected.matches("REJECT")){
+            if(rejected.matches("REJECT")) {
                 selectionTry++;
-            }else System.out.println(rejected);
-
+            }
             if(selectionTry == 2) {
                 Syntax syntax1 = new Syntax(tokenStack2, parseTable, selectionTry);
-                System.out.println(syntax1.syntaxifying());
+                rejected = syntax1.syntaxifying();
+                //Syntax syntax1 = new Syntax(tokenStack2, parseTable, selectionTry);
             }
+
+            if(rejected.matches("ACCEPT")){
+                Semantic semantic = new Semantic();
+            }
+
 
         } catch (Exception IOException) {
             System.out.println("Error reading file.");
         }
     }
+}
+
+class Semantic {
+
 }
 
 

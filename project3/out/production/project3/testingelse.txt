@@ -1,0 +1,10 @@
+int main(void)
+{
+  if (x >0)
+	if (x <6)
+		x = 9;
+  else
+	x = 5;
+
+
+}

@@ -2,22 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="978e2407-452e-49b6-ae80-9da583949e1e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/testingelse.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/project2/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/project2/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/project2/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Analyzer.class" beforeDir="false" afterPath="$PROJECT_DIR$/Analyzer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Token.class" beforeDir="false" afterPath="$PROJECT_DIR$/Token.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/project2/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/project2/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/project2/Analyzer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/project2/Analyzer.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/project2/Syntax.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/project2/Syntax.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/project2/Token.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/project2/Token.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/project2/p2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/project2/p2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/project2/test2.txt" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/project2/test2.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/project2/test3.txt" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/project2/test3.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/p2.class" beforeDir="false" afterPath="$PROJECT_DIR$/p2.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/p2.java" beforeDir="false" afterPath="$PROJECT_DIR$/p2.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test3.txt" beforeDir="false" afterPath="$PROJECT_DIR$/test3.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/testfile12.txt" beforeDir="false" afterPath="$PROJECT_DIR$/testfile12.txt" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -31,12 +24,10 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/p2.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="223">
-              <caret line="165" column="45" lean-forward="true" selection-start-line="165" selection-start-column="45" selection-end-line="165" selection-end-column="45" />
+            <state relative-caret-position="-329">
+              <caret line="85" column="87" selection-start-line="85" selection-start-column="87" selection-end-line="85" selection-end-column="87" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#12795#12803#0" expanded="true" />
-                <element signature="e#12867#12875#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -58,10 +49,10 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds">
     <option name="y" value="23" />
-    <option name="width" value="1147" />
-    <option name="height" value="824" />
+    <option name="width" value="1440" />
+    <option name="height" value="825" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -69,8 +60,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -87,11 +76,13 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1551824848100" />
-    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1551850981984" />
+    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.General" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -133,10 +124,10 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1440" height="824" extended-state="6" />
+    <frame x="0" y="23" width="1440" height="825" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.10586552" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.11015737" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -145,7 +136,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.24863388" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.24829468" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -226,14 +217,15 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Syntax.class">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/p2.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="223">
-          <caret line="165" column="45" lean-forward="true" selection-start-line="165" selection-start-column="45" selection-end-line="165" selection-end-column="45" />
+        <state relative-caret-position="-329">
+          <caret line="85" column="87" selection-start-line="85" selection-start-column="87" selection-end-line="85" selection-end-column="87" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#12795#12803#0" expanded="true" />
-            <element signature="e#12867#12875#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -242,6 +234,17 @@
   <component name="masterDetails">
     <states>
       <state key="ProjectJDKs.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ScopeChooserConfigurable.UI">
         <settings>
           <splitter-proportions>
             <option name="proportions">
